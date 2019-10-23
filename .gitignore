@@ -1,3 +1,2 @@
 volumes/
-*.json
-!search-req.json
+downloads/
