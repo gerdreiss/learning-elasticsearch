@@ -1,0 +1,7 @@
+{
+    "query": {
+        "fuzzy": {
+            "title": { "value": "intrsteller", "fuzziness": 1 }
+        }
+    }
+}

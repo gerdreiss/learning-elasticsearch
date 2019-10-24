@@ -22,6 +22,15 @@ curl -H "Content-Type: application/json" \
      -XGET "localhost:9200/movies/_search?pretty" \
      -d @queries/complex-filter.json
 
+curl -H "Content-Type: application/json" \
+     -XGET "localhost:9200/movies/_search?pretty" \
+     -d '{ "query": { "fuzzy": { "title": { "value": "intrsteller", "fuzziness": 2 }}}}'
+
+curl -H "Content-Type: application/json" \
+     -XGET "localhost:9200/movies/_search?pretty" \
+     -d '{ "query": { "prefix": { "title": "star" }}}'
+
+
 # more queries
 # { "match_all": {}}
 # { "match": { "title": "star" }}

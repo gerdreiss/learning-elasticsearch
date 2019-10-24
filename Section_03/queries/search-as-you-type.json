@@ -1,0 +1,10 @@
+{
+    "query": {
+        "match_phrase_prefix": {
+            "title": {
+                "query": "star trek",
+                "slop": 10
+            }
+        }
+    }
+}
