@@ -1,0 +1,14 @@
+{
+    "mappings": {
+        "properties": {
+            "title": {
+                "type": "text",
+                "fields": {
+                    "raw": {
+                        "type": "keyword"
+                    }
+                }
+            }
+        }
+    }
+}
