@@ -1,7 +1,0 @@
-{
-    "mappings": {
-        "properties": {
-            "year": { "type": "date" }
-        }
-    }
-}
