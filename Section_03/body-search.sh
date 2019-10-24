@@ -18,6 +18,10 @@ curl -H "Content-Type: application/json" \
      -XGET "localhost:9200/movies/_search?pretty" \
      -d @queries/phrase-slop-100.json
 
+curl -H "Content-Type: application/json" \
+     -XGET "localhost:9200/movies/_search?pretty" \
+     -d @queries/complex-filter.json
+
 # more queries
 # { "match_all": {}}
 # { "match": { "title": "star" }}
