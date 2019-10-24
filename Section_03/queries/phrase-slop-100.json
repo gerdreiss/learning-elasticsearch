@@ -1,0 +1,7 @@
+{
+    "query": {
+        "match_phrase": {
+            "title": { "query": "star beyond", "slop": 100 }
+        }
+    }
+}
