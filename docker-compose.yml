@@ -1,6 +1,21 @@
 version: "3"
 services:
 
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.4.1
+    container_name: kibana
+    hostname: kibana
+    ports:
+      - "5601:5601"
+    external_links:
+      - elasticsearch
+    environment:
+      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+      - "XPACK_MONITORING_UI_CONTAINER_ELASTICSEARCH_ENABLED=false"
+      - "XPACK_MONITORING_ENABLED=false"
+    depends_on:
+      - elasticsearch
+
   elasticsearch:
     image:  docker.elastic.co/elasticsearch/elasticsearch:7.4.1
     container_name: elasticsearch
@@ -23,17 +38,19 @@ services:
     depends_on:
       - elasticsearch
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.4.1
-    container_name: kibana
-    hostname: kibana
-    ports:
-      - "5601:5601"
-    external_links:
-      - elasticsearch
+  mysql:
+    image: mysql
+    container_name: mysql
+    hostname: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
-      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
-      - "XPACK_MONITORING_UI_CONTAINER_ELASTICSEARCH_ENABLED=false"
-      - "XPACK_MONITORING_ENABLED=false"
-    depends_on:
-      - elasticsearch
+      MYSQL_ROOT_PASSWORD: daniel1
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    hostname: adminer
+    restart: always
+    ports:
+      - 8080:8080
